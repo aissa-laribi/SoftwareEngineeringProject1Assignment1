@@ -26,6 +26,8 @@ int main(void) {
 	char artistsAndSongs[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH] = {};
 	unsigned short numOfArtists = 0;
 	unsigned short *numOfArtistsPtr = &numOfArtists;
+	unsigned short numOfSongs = 0;
+	unsigned short *numOfSongsPtr = &numOfSongs;
 
 	/***************************************************
 	*				USER INPUT						   *
@@ -60,11 +62,11 @@ int main(void) {
 	* Artist												*
 	* 	- Song 1											*
 	* 	- Song 2											*/
-	printSongs(artistsAndSongs, *numOfArtistsPtr);
+	*numOfSongsPtr = printSongs(artistsAndSongs, *numOfArtistsPtr);
 	/***************************************************
 	*		SHUFFLING AND PRINTING THE PLAYLIST 	   *
 	***************************************************/
-	puts("Shuffled list of songs:");
+	puts("Shuffled Playlist:");
 	/* This function will shuffle and print all the elements            *
 	* of the previous sorted data until we get 24 songs. 			    *
 	* The index of the sorted artists will be shuffled and stored in a  *
@@ -74,7 +76,7 @@ int main(void) {
 	* 3, 1 and 2. If the index is 1, it prints 1 and 3                  *
 	* This way we can play a sequence of 3 2 or 1 song from the same    *
 	* artist.														    */
-	shuffle(artistsAndSongs);
+	shuffle(artistsAndSongs, *numOfSongsPtr);
 
 	return EXIT_SUCCESS;
 }

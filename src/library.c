@@ -62,6 +62,7 @@ void insertSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short n
 	}
 }
 
+
 void sortArtists(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfArtists){
 
 	/*This string will be used as a buffer for swapping 2 strings*/
@@ -158,13 +159,15 @@ void sortSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]) {
     }
 }
 
-void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]){
-	/*Keep track of the total_songs to be played*/
-	unsigned short total_songs = 0;
+void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfSongs){
+
 	/*Arbitrary array of 4 integers to be shuffled later and each index of this array *
 	 * will be passed to data to be printed*/
 	unsigned short artist_order[MAX_ARTISTS] = {2,1,0,3};
+	/*This variable will be used to shuffle songs*/
+	unsigned short sequence = 1;
 	unsigned short i,j,swap;
+	numOfSongs = numOfSongs * 2;
 
 	/*Call the random generator taking as input current Unix time*/
 	srand(time(NULL));
@@ -178,9 +181,9 @@ void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]){
 			artist_order[i] = swap;
 		}
 	}
-
+	/*PREVIOUS SONGS SHUFFLING ALGORITHM*/
 	/*If 4 artists and 3 songs per artist it will return 24 songs shuffled*/
-	while(total_songs < 25){
+	/*while(total_songs < 25){
 	for(i = 0; i < 4 ; i++) {
 			j = (rand()%(3)) + 1;
 			if(strcmp(data[i][j], "\n") != 0){
@@ -190,7 +193,7 @@ void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]){
 			if(total_songs == 24)
 				break;
 			if(j== 3 && strcmp(data[artist_order[i]][1], "\n") != 0 && strcmp(data[artist_order[i]][2], "\n") != 0){
-				/*It will print 2 additional songs from the same artist*/
+				It will print 2 additional songs from the same artist
 				if(strcmp(data[artist_order[i]][1], "\n") != 0)
 				printf("%s - %s", data[artist_order[i]][0], data[artist_order[i]][1]);
 				total_songs++;
@@ -202,7 +205,7 @@ void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]){
 				if(total_songs == 24)
 								break;
 			} else if(j== 1 && strcmp(data[i][j], "\n") != 0 && strcmp(data[artist_order[i]][3], "\n") != 0){
-				/*It will print 1 additional songs from the same artist*/
+				It will print 1 additional songs from the same artist
 				if(strcmp(data[artist_order[i]][3], "\n") != 0)
 				printf("%s - %s", data[artist_order[i]][0], data[artist_order[i]][3]);
 				total_songs++;
@@ -212,20 +215,102 @@ void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]){
 	}
 	if(total_songs == 24)
 					break;
+	}*/
+	/*NEW SONGS SHUFFLING ALGORITHM*/
+	while(numOfSongs && sequence){/*While total of songs not equal to 0*/
+		switch(sequence){
+		case 1:
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][3]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][1]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][2]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][3]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][1]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][2]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][3]);
+		   --numOfSongs;
+		   sequence = 2;
+		   /*End of first sequence*/
+		   break;
+		case 2:
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][1]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][2]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][3]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][1]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][2]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][3]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][1]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][2]);
+		   --numOfSongs;
+		   sequence = 3;
+		   /*End of second sequence*/
+		   break;
+		case 3:
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][3]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][1]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][2]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][3]);
+		   --numOfSongs;
+		   sequence = 4;
+		   /*End of second sequence*/
+		   break;
+		case 4:
+			printf("%s - %s", data[artist_order[0]][0], data[artist_order[0]][2]);
+			--numOfSongs;
+			printf("%s - %s", data[artist_order[1]][0], data[artist_order[1]][2]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][1]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[2]][0], data[artist_order[2]][3]);
+		   --numOfSongs;
+			printf("%s - %s", data[artist_order[3]][0], data[artist_order[3]][1]);
+		   --numOfSongs;
+		   sequence = 0;
+		   /*End of last sequence*/
+		   break;
+		default:
+			break;
+
+		}
+
+
 	}
 }
 
 /*Printing the sorted playlist*/
-void printSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfArtists){
+/*Quick edit: void type to int type to return the total number of songs that will be used in shuffling algorithm*/
+int printSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfArtists){
+
+	/*Will be returned at the end of the function and passed onto the shuffling function*/
+	unsigned short totalNumOfSongs = 0;
+
+
 	for(size_t i = 0;    i < numOfArtists ;i++)  {
 		printf("%s \n",data[i][0]);
 		for(  size_t j = 1; j < 4;j++){
 			if(strcmp(data[i][j], "\n") != 0){
 				printf("  - %s",data[i][j]);
+				++totalNumOfSongs;
 			}
 			else if(strcmp(data[i][j], "\n") != 0){
 				continue;
 			}
 		}
 	}
+	return totalNumOfSongs;
 }

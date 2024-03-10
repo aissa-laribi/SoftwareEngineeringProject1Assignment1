@@ -13,6 +13,6 @@ void sortArtists(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short n
 
 void sortSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]);
 
-void printSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfArtists);
+int printSongs(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfArtists);
 
-void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH]);
+void shuffle(char data[MAX_ARTISTS][MAX_SONGS][MAX_LENGTH], unsigned short numOfSongs);
