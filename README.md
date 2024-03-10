@@ -14,9 +14,11 @@ The functionalities of the CLI are:
 ## Algorithms
 
 Sorting:
-        Selection Sorting
+        
+        Selection Sort
 
 Shuffling:
+        
         Fisher Yates(only for artists)
         Sequences defined by myself for songs(example artist1 Song 3, artist1 Song1, Artist 2 Song 1....)
 
