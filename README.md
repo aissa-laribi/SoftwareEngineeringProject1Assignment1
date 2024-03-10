@@ -20,7 +20,7 @@ Shuffling:
         Fisher Yates(only for artists)
         Sequences defined by myself for songs(example artist1 Song 3, artist1 Song1, Artist 2 Song 1....)
 
-### Algorithms
+### Usage
         Download or fork the repo
         Build or compile ./src/main.c
         Run from IDE or run executable file from last complile 
