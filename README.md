@@ -1,4 +1,4 @@
-# Assignment 1
+# iPod/Zen/Zune/ Style Sort and Shufle App
 
 
 Command Line Interface sorting and shuffling a list of songs received as input 
@@ -26,3 +26,5 @@ Shuffling:
         Download or fork the repo
         Build or compile ./src/main.c
         Run from IDE or run executable file from last complile 
+
+This project was an assignment to submit individually in the module Software Engineering Project 1
